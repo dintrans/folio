@@ -29,5 +29,9 @@ def checkRut(request, user_id, election_id, rut_number):
         data = serializers.serialize('json', Vote.objects.filter(voter__rut = rut_number))
     return HttpResponse(data, content_type='application/json')
 
-def getFolio(request, user_id, election_id, tui_number, folio):
-    return HttpResponse("Ingreso folio %s" % folio )
+def getFolio(request, user_id, election_id, rut_number, folio):
+    voterpk = Voter.objects.filter(rut = rut_number)[0]
+    electionpk = Election.objects.filter(pk = election_id)[0]
+    newVote = Vote(election=electionpk, voter=voterpk, roster=folio, voteMethod='tui')
+    newVote.save()
+    return HttpResponse("Success on folio %s" % folio )

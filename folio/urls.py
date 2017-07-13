@@ -20,7 +20,7 @@ from vote import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^voteTui/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<tui_number>[0-9a-fA-F]+)/', views.checkTui, name='checkTui'),
-    url(r'^voteRut/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<rut_number>[0-9]{6,9}-[0-9K])/(?P<folio>[0-9]+)$', views.getFolio, name='getFolio'),
+    url(r'^voteRut/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<rut_number>[0-9]{6,9}-[0-9K])/(?P<folio>[0-9]+)/$', views.getFolio, name='getFolio'),
     url(r'^voteRut/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<rut_number>[0-9]{6,9}-[0-9K])/', views.checkRut, name='checkRut'),
 
 ]
