@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from vote import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^voteTui/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<tui_number>[0-9a-fA-F]+)/(?P<folio>[0-9]+)$', views.getFolio, name='getFolio'),
+    url(r'^voteTui/(?P<user_id>[0-9]+)/(?P<election_id>[0-9]+)/(?P<tui_number>[0-9a-fA-F]+)/', views.checkTui, name='checkTui'),
 ]
