@@ -34,4 +34,4 @@ def getFolio(request, user_id, election_id, rut_number, folio):
     electionpk = Election.objects.filter(pk = election_id)[0]
     newVote = Vote(election=electionpk, voter=voterpk, roster=folio, voteMethod='tui')
     newVote.save()
-    return HttpResponse("Success on folio %s" % folio )
+    return HttpResponse("{\"Success\":\"True\"}", content_type='application/json')
